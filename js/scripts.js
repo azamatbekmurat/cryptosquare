@@ -1,7 +1,7 @@
 //business logic
 
 function generateSquare(text) {
-  var main = [];
+  var square = [];
   var rowLength = Math.round(Math.sqrt(text.length));
   var rowNum = Math.ceil(Math.sqrt(text.length));
     var startPos = 0;
@@ -16,43 +16,48 @@ function generateSquare(text) {
       }
         count++;
       }
-      main.push(thisRow);
+      square.push(thisRow);
       startPos += rowLength;
     }
-    return main;
+    return square;
   }
 
-//nuzhno proverit
+//nuzhno dorabotat
 function encode(text) {
-  var encodedText = [];
-  var cryptoText = "";
+
+  var encodedCol = [];
+  var cryptoText = [];
   for (var i = 0; i < text.length; i++) {
-    for (var j=0; j<)
-    encodedText.push(text[i]);
+    for (var j=0; j<text.length; j++) {
+      if (text[j][i] == undefined) {
+        encodedCol.push("");
+      } else {
+      encodedCol.push(text[j][i]);
+      console.log(encodedCol);
+      // encodedText.push(text[i][j]);
+      }
+    }
+    cryptoText.push(encodedCol);
+    console.log(cryptoText);
 
   }
-  cryptoText = encodedText.join("");
+
 }
 
 //user interface logic
 $(document).ready(function() {
   $("form#crypto").submit(function(event) {
-    main = [];
-    array = [];
-    encodedText = [];
-    cryptoText = "";
-    event.preventDefault();
 
+    event.preventDefault();
+    var cryptoEncoded = "";
     var inputText = $("#text").val();
 
+    var arraySquare = generateSquare(inputText);
+    console.log(arraySquare);
+    cryptoEncoded = encode(arraySquare);
 
-    generateSquare(inputText);
-    console.log(main);
-
-    encode(main);
-
-    console.log(cryptoText);
-
+    $(".output").text(cryptoEncoded);
+    $("#result").show();
 
   });
 });

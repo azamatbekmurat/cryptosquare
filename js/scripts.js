@@ -1,3 +1,4 @@
+//business logic
 
 function generateSquare(text) {
   var main = [];
@@ -21,25 +22,36 @@ function generateSquare(text) {
     return main;
   }
 
+//nuzhno proverit
 function encode(text) {
+  var encodedText = [];
+  var cryptoText = "";
+  for (var i = 0; i < text.length; i++) {
+    for (var j=0; j<)
+    encodedText.push(text[i]);
 
-
+  }
+  cryptoText = encodedText.join("");
 }
 
-
+//user interface logic
 $(document).ready(function() {
   $("form#crypto").submit(function(event) {
     main = [];
     array = [];
+    encodedText = [];
+    cryptoText = "";
     event.preventDefault();
 
     var inputText = $("#text").val();
-    console.log(inputText);
 
-    encode(inputText);
-    console.log(array);
 
+    generateSquare(inputText);
     console.log(main);
+
+    encode(main);
+
+    console.log(cryptoText);
 
 
   });

@@ -1,10 +1,11 @@
 # Cryptosquare Project_
 
-#### _, 3.29.18_
+#### _This website encodes input text using square code cryptography, 3.29.18_
 
 #### By _**Eric Wolfe**, **Azamat Bekmuratov**_
 
 ## Description
+
 
 
 

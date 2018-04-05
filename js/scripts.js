@@ -22,26 +22,22 @@ function generateSquare(text) {
     return square;
   }
 
-//nuzhno dorabotat
-function encode(text) {
+function encode(squareArray) {
 
   var encodedCol = [];
   var cryptoText = [];
-  for (var i = 0; i < text.length; i++) {
-    for (var j=0; j<text.length; j++) {
-      if (text[j][i] == undefined) {
-        encodedCol.push("");
+  for (var i = 0; i < squareArray.length; i++) {
+    for (var j=0; j<squareArray.length; j++) {
+      if (squareArray[j][i] == undefined) {
+        continue;
       } else {
-      encodedCol.push(text[j][i]);
-      console.log(encodedCol);
-      // encodedText.push(text[i][j]);
+      encodedCol.push(squareArray[j][i]);
       }
     }
-    cryptoText.push(encodedCol);
-    console.log(cryptoText);
-
   }
-
+  cryptoText.push(encodedCol);
+  // console.log(cryptoText);
+  return cryptoText;
 }
 
 //user interface logic
@@ -49,14 +45,19 @@ $(document).ready(function() {
   $("form#crypto").submit(function(event) {
 
     event.preventDefault();
-    var cryptoEncoded = "";
     var inputText = $("#text").val();
 
     var arraySquare = generateSquare(inputText);
     console.log(arraySquare);
-    cryptoEncoded = encode(arraySquare);
+    var cryptoEncoded = encode(arraySquare);
+    console.log(cryptoEncoded);
+    var encodeString = cryptoEncoded.join("");
+    console.log(encodeString);
 
-    $(".output").text(cryptoEncoded);
+    var fixedString = encodeString.split(",").join("");
+    // console.log(fixedString);
+
+    $(".output").text(fixedString);
     $("#result").show();
 
   });
